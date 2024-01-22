@@ -10,4 +10,7 @@ public class Solution_1 {
         }
         return num;
     }
+    public static void main(String args[]) {
+    	System.out.println("ㅇ안녕?");
+    }
 }
