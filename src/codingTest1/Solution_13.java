@@ -33,6 +33,7 @@ public class Solution_13 {
         		answer[i] += hm.get(per);
         	}
         	i++;
+        	i++;
         }
         
         return answer;
