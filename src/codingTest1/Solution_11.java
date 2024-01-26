@@ -31,33 +31,63 @@ public class Solution_11 {
 	오름차순으로 정렬하여 return 하도록 solution 함수를 완성해 주세요. 
 	단, 조건을 만족하는 데이터는 항상 한 개 이상 존재합니다.
 	*/
-	
+	private int[][] selectionSort(int[][] data, int sortBy){
+		for(int i = 0; i < data.length; i++) {
+			for (int j = i+1; j < data.length; j++) {
+				if (data[i][sortBy] > data[j][sortBy]) {
+					int[] min = data[j];
+					data[j] = data[i];
+					data[i] = min;
+				}
+			}
+		}
+		return data;
+	}
 
     public int[][] solution(int[][] data, String ext, int val_ext, String sort_by) {
         int co = 0;
         String[] code = {"code", "date", "maximum", "remain"};
         
         int num = Arrays.asList(code).indexOf(ext);
-        int sort = Arrays.asList(code).indexOf(sort_by);
-
-		for (int[] d : data) {
-			if (d[sort] < val_ext) {
-				co++;
-			}
-		}
+        int sortBy = Arrays.asList(code).indexOf(sort_by);
+		int i = 0;
 		
+        for (int[] da : data) {
+        	if (da[num] < val_ext) {
+        		co++;
+        	}
+        }
+        
 		int[][] answer = new int[co][4];
 		
-		for (int[] d : data) {
-			if (d[sort] < val_ext) {
-				answer[co] = d;
-				co++;
-			}
-		}
-
-		
-		Arrays.sort(answer[sort]);
+        for (int[] da : data) {
+        	if (da[num] < val_ext) {
+        		answer[i] = da;
+        		i++;
+        	}
+        }
         
+        answer = selectionSort(answer, sortBy);
+		
         return answer;
     }
+    
+    public static void main(String[] args) {
+        Solution_11 sol = new Solution_11();
+        int[][] data = {{1, 20300104, 100, 80}, {2, 20300804, 847, 37}, {3, 20300401, 10, 8}};
+        String ext = "date";
+        int val_ext = 20300501;
+        String sort_by = "remain";
+
+        int[][] result = sol.solution(data, ext, val_ext, sort_by);
+
+        for (int[] row : result) {
+            System.out.println(Arrays.toString(row));
+        }
+    }
+    
+    // 선택 정렬로 구현
+    // 선택 정렬이란? 첫 번째 값과 나머지 값 비교
+    // 그래서 제일 작은 숫자를 첫 번째로 끌고 옴
+    // 나머지 숫자들 중에서 제일 작은 숫자로 비교
 }
