@@ -57,4 +57,35 @@ public class Solution_15 {
         answer[3]++;
         return answer;
     }
+    
+    class Solution {
+        public int[] solution(String[] wallpaper) {
+            // minX, minY는 최대값으로 초기화하여 가장 작은 좌표를 찾을 수 있도록 설정
+            int minX = Integer.MAX_VALUE;
+            int minY = Integer.MAX_VALUE;
+            // maxX, maxY는 최소값으로 초기화하여 가장 큰 좌표를 찾을 수 있도록 설정
+            int maxX = Integer.MIN_VALUE;
+            int maxY = Integer.MIN_VALUE;
+
+            // wallpaper 배열을 순회하는 이중 for 반복문
+            for(int i = 0; i < wallpaper.length; i++) {
+                for(int j = 0; j < wallpaper[i].length(); j++) {
+                    // '#' 문자를 찾으면 해당 좌표를 사용하여 최소/최대 x,y 좌표를 갱신
+                    if(wallpaper[i].charAt(j) == '#') {
+                        minX = Math.min(minX, i);
+                        minY = Math.min(minY, j);
+                        maxX = Math.max(maxX, i);
+                        maxY = Math.max(maxY, j);
+                    }
+                }
+            }
+
+            // 최소 x,y 좌표와 최대 x,y 좌표 (최대 좌표에 1을 더해 반환)를 배열로 반환
+            return new int[]{minX, minY, maxX + 1, maxY + 1};
+        }
+        
+        // 배운 점 : 아아아아아아 Math.min, Math.max 는 굳이 if 문 걸지 않고도 간결하게
+        // 비교값을 반환하게 한다. 너무 쉽고 코드가 간결해 보임.
+        // 너무나 크게 배웠다아.
+    }
 }
