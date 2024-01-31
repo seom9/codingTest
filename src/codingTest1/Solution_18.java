@@ -20,9 +20,30 @@ public class Solution_18 {
 	cards1과 cards2에 적힌 단어들로 goal를 만들 있다면 "Yes"를, 
 	만들 수 없다면 "No"를 return하는 solution 함수를 완성해주세요.
 	*/
-	
     public String solution(String[] cards1, String[] cards2, String[] goal) {
-        String answer = "";
+        String answer = "Yes";
+ 
+        int idxCards1 = 0;
+        int idxCards2 = 0;
+ 
+        for (int i = 0; i < goal.length; i++) {
+            if(idxCards1 < cards1.length && goal[i].equals(cards1[idxCards1])) {
+                idxCards1++;
+                continue;
+            }
+            
+            if(idxCards2 < cards2.length && goal[i].equals(cards2[idxCards2])) {
+                idxCards2++;
+                continue;
+            }
+ 
+            answer = "No"; // 위 조건문에서 하나라도 성립되지 않을 경우 No를 출력하도록 함
+            return answer;
+        }
+ 
         return answer;
     }
+    
+    // 문제 해석을 잘못해서 한참동안 애먹었다.
+    // 문제를 제대로 이해하고 나니까 금방 풀렸다아.
 }
