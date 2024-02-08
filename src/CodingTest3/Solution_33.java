@@ -1,7 +1,7 @@
 package CodingTest3;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Solution_33 {
@@ -39,28 +39,44 @@ public class Solution_33 {
 	이때 파기해야 할 개인정보의 번호를 오름차순으로 1차원 정수 배열에 담아 return 하도록 solution 함수를 완성해 주세요.
 	*/
 	
-	private LocalDateTime timeOfTerms(String time) {
-        String[] time1 = time.split("\\."); // 정규표현식에서의 점
-        int year = Integer.parseInt(time1[0]);
-        int month = Integer.parseInt(time1[1]);
-        int dayOfMonth = Integer.parseInt(time1[2]);
-        return LocalDateTime.of(year, month, dayOfMonth, 0, 0, 0);
+	private int[] privacy(String ter, int mon) {
+		String[] hi = ter.split("\\.");
+		
+		int[] hi2 = new int[3];
+		
+		hi2[2] = Integer.parseInt(hi[2]);
+		hi2[1] = (Integer.parseInt(hi[1]) + mon) % 12;
+		hi2[0] = Integer.parseInt(hi[0]) + ((Integer.parseInt(hi[1]) + mon)/12);		
+		
+	    return hi2;
 	}
 	
     public int[] solution(String today, String[] terms, String[] privacies) {
-        List<Integer> answer = new ArrayList<>();
-        LocalDateTime[] time = new LocalDateTime[privacies.length];
+        List<Integer> an = new ArrayList<>();
         
-        for (int i = 0; i < privacies.length; i++) {
-        	
+        // 1. term 바로 꺼내 쓸 수 있게 hashMap 으로 넣어 주기
+        HashMap<String, Integer> term = new HashMap<>();
+        for (String i : terms) {
+        	String[] hi = i.split(" ");
+        	term.put(hi[0], Integer.parseInt(hi[1]));
         }
-        
+       
+        // 2. privacies 에 약관 날짜 더해서 today보다 더 간다? false
+        // 3. today 랑 비교해 주는 과정이 없음
         for (int i = 0; i < privacies.length; i++) {
-            switch (privacies[2]) {
-            	case "A" : timeOfTerms(privacies[i])
-            }
+        	String[] hi = privacies[i].split(" ");
+        	int[] hi2 = privacy(hi[0], term.get(hi[1]));
+        	String[] to = today.split(".");
+        	for (int j = 0; j < 3; j++) {
+            	if (Integer.parseInt(to[j]) > hi2[j]) {
+            		an.add(i); 
+            		break;
+            	} else if (Integer.parseInt(to[j]) < hi2[j]) {
+            		break;
+            	}
+        	}
         }
-
-        return answer;
+    	
+    	return an.stream().mapToInt(Integer::intValue).toArray();
     }
 }
