@@ -39,17 +39,18 @@ public class Solution_33 {
 	이때 파기해야 할 개인정보의 번호를 오름차순으로 1차원 정수 배열에 담아 return 하도록 solution 함수를 완성해 주세요.
 	*/
 	
-	private int[] privacy(String ter, int mon) {
-		String[] hi = ter.split("\\.");
-		
-		int[] hi2 = new int[3];
-		
-		hi2[2] = Integer.parseInt(hi[2]);
-		hi2[1] = (Integer.parseInt(hi[1]) + mon) % 12;
-		hi2[0] = Integer.parseInt(hi[0]) + ((Integer.parseInt(hi[1]) + mon)/12);		
-		
-	    return hi2;
-	}
+    private int[] privacy(String ter, int mon) {
+        String[] hi = ter.split("\\.");
+
+        int[] hi2 = new int[3];
+
+        // 12진수로 바꾸는 과정
+        hi2[2] = Integer.parseInt(hi[2]);
+        hi2[1] = (Integer.parseInt(hi[1]) + mon - 1) % 12 + 1; // 이전 달부터 시작하도록 조정
+        hi2[0] = Integer.parseInt(hi[0]) + (Integer.parseInt(hi[1]) + mon - 1) / 12;
+
+        return hi2;
+    }
 	
     public int[] solution(String today, String[] terms, String[] privacies) {
         List<Integer> an = new ArrayList<>();
@@ -66,17 +67,23 @@ public class Solution_33 {
         for (int i = 0; i < privacies.length; i++) {
         	String[] hi = privacies[i].split(" ");
         	int[] hi2 = privacy(hi[0], term.get(hi[1]));
-        	String[] to = today.split(".");
+        	String[] to = today.split("\\.");
+        	int co = 0;
         	for (int j = 0; j < 3; j++) {
             	if (Integer.parseInt(to[j]) > hi2[j]) {
-            		an.add(i); 
+            		an.add(i+1); 
             		break;
             	} else if (Integer.parseInt(to[j]) < hi2[j]) {
             		break;
+            	} else {
+            		co++;
+            		if (co == 3) an.add(i+1);
+            		continue;
             	}
         	}
         }
     	
     	return an.stream().mapToInt(Integer::intValue).toArray();
     }
+
 }
