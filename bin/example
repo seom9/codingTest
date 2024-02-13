@@ -1,0 +1,12 @@
+package CodingTest4;
+
+public class S41_ {
+	/*
+
+	 */
+	
+    public int solution(int[] a, int[] b) {
+        int answer = 1234567890;
+        return answer;
+    }
+}
