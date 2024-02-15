@@ -42,7 +42,7 @@ public class Solution_37notyet {
     }
     
     // 이 방법도 런타임 에러 뜸... 그럼 대체 무슨 방법이 런타임 에러가 안 뜨는 걸까
-    public int solution(String t, String p) {
+    public int solution3(String t, String p) {
         int answer = 0;
         int tLeng = t.length();
         int pLeng = p.length();
@@ -63,4 +63,18 @@ public class Solution_37notyet {
         
         return answer;
     }
+    
+    
+    public int solution(String t, String p) {
+    	int answer = 0;
+        int pLeng=p.length();
+        long intP = Long.parseLong(p);
+        for(int i=0; i<t.length()-pLeng+1; i++){
+            int intSubT=Integer.parseInt(t.substring(i, i+pLeng));
+            if(intP>=intSubT) answer++;
+        }
+        return answer;
+    }
+
+
 }
