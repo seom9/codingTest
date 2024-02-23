@@ -6,7 +6,6 @@ import java.util.Stack;
 
 // 스택과 큐로 풀이해 볼 것
 public class S54_같은숫자는싫어 {
-	
 	/*
 	배열 arr가 주어집니다. 배열 arr의 각 원소는 숫자 0부터 9까지로 이루어져 있습니다. 
 	이때, 배열 arr에서 연속적으로 나타나는 숫자는 하나만 남기고 전부 제거하려고 합니다. 
@@ -18,6 +17,7 @@ public class S54_같은숫자는싫어 {
 	*/
 	
 	// 그냥 이렇게 스택으로 자료 구조 변경해도 int 랑 똑같이 나옴
+	// 데크로 풀었으면 더 나았을 듯
     public Stack<Integer> solution(int []arr) {
 
         Stack<Integer> stack = new Stack<>();
