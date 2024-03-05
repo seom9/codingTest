@@ -24,7 +24,35 @@ public class S60_푸드파이트대회 {
 	*/
 	
     public String solution(int[] food) {
-        String answer = "";
+        String answer = "0";
+        
+        for (int i = 1; i < food.length; i++) {
+        	int co = food[i] / 2;
+        	
+        	for (int j = 0; j < co; j++) {
+        		answer = i + answer + i;
+        	}
+        }
+        
+        return answer;
+    }
+	
+    // 굳이 아래처럼 할 필요 없이
+    
+    public String solution1(int[] food) {
+        String answer = "0";
+        String right = "";
+        String left = "";
+        
+        for (int i = 1; i < food.length; i++) {
+        	int co = food[i] / 2;
+        	
+        	for (int j = 0; j < co; j++) {
+        		right = right + food[i];
+        		left = left + food[i];
+        	}
+        }
+        
         return answer;
     }
 }
