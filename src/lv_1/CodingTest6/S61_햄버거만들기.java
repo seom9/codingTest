@@ -22,44 +22,39 @@ public class S61_햄버거만들기 {
 	상수가 포장하는 햄버거의 개수를 return 하도록 solution 함수를 완성하시오.
 	*/
 	
-    public int solution(int[] ingredient) {
-    	int[] ingre = {1, 2, 3, 1};
-    	int index = 0;
-    	int i = 0;
-    	int answer = 0;
-    	
-        List<Integer> hamburger = Arrays.stream(ingredient)
-        		.boxed()
-                .collect(Collectors.toList());
-        
-        while (true) {
-        	if (hamburger.get(i) == ingre[index]) {
-                System.out.println("햄버거 : " + i );
-                if (index != 4) System.out.println("요소 : " + index);
-                hamburger.remove(i);
-                i--;
-        		index++;
+    public static int solution(int[] ingredient) {
+        int[] ingre = {1, 2, 3, 1};
+        int index = 0;
+        int answer = 0;
 
-        		if (index == 4) {
-        			System.out.println("=== 새 햄버거 ===");
-        			index = 0;
-        			i = 0;
-        			answer++;
-        		}
-        	}
-        	
-        	i++;
-        	if (index >= hamburger.size()) break;  
-        	
+        List<Integer> hamburger = Arrays.stream(ingredient)
+                .boxed()
+                .collect(Collectors.toList());
+
+        for (int i = 0; i < hamburger.size(); i++) {
+            if (hamburger.get(i) == ingre[index]) {
+                System.out.println("햄버거 : " + i);
+                System.out.println("index : " + index);
+                hamburger.remove(i);
+                i--; 
+                index++;
+
+                if (index == 4) {
+                    System.out.println("=== 새 햄버거 ===" + index);
+                    index = 0;
+                    i = 0;
+                    answer++;
+                }
+            }
         }
-        
+
         return answer;
     }
     
     public static void main(String[] args) {
     	S61_햄버거만들기 ham = new S61_햄버거만들기();
     	
-    	int[] ingredient = {2, 1, 1, 2, 3, 1, 2, 3, 1};
+    	int[] ingredient = {1, 3, 2, 1, 2, 1, 3, 1, 2};
     	
     	System.out.println("answer : " + ham.solution(ingredient));
     }
