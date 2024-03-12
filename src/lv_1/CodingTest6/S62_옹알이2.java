@@ -12,6 +12,25 @@ public class S62_옹알이2 {
 	
     public int solution(String[] babbling) {
         int answer = 0;
+        int sp = 0;
+        int index = 0;
+        StringBuilder sb = new StringBuilder();
+        
+        for (String str : babbling) {
+        	
+        	for (int i = 0; i < str.length(); i++) {
+        		sb.append(str.charAt(i));
+        		if (i > 0 && (str.equals("aya") || str.equals("ye"))
+        				|| str.equals("woo") || str.equals("ma")) {
+        			continue;
+        		}else if (i > 2) {
+        			break;
+        		}
+        		answer++;
+        	}
+        	
+        }
+        
         return answer;
     }
 }
