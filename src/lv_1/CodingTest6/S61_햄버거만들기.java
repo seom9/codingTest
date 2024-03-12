@@ -22,7 +22,26 @@ public class S61_햄버거만들기 {
 	상수가 포장하는 햄버거의 개수를 return 하도록 solution 함수를 완성하시오.
 	*/
 	
-    public static int solution(int[] ingredient) {
+    public int solution(int[] ingredient) {
+        int answer = 0;
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < ingredient.length; i++) {
+            sb.append(ingredient[i]);
+            // 길이가 3보다 크고 마지막 4자리가 "1231"이면
+            if (sb.length() > 3 && sb.substring(sb.length() - 4, sb.length()).equals("1231")) {
+                answer++;
+                sb.delete(sb.length() - 4, sb.length()); // sb에서 마지막 4개가 햄버거란 뜻이니까 햄버거 없애기
+            }
+        }
+
+        return answer;
+    }
+
+	
+	// 틀린 이유... 또 문제 제대로 파악 못 함.
+	// 문제는 정확하게 맞는 것만 뽑아야 하는데 나는 그냥 맞으면 때려 넣게 작성했음
+    public static int solution1(int[] ingredient) {
         int[] ingre = {1, 2, 3, 1};
         int index = 0;
         int answer = 0;
@@ -54,7 +73,7 @@ public class S61_햄버거만들기 {
     public static void main(String[] args) {
     	S61_햄버거만들기 ham = new S61_햄버거만들기();
     	
-    	int[] ingredient = {1, 3, 2, 1, 2, 1, 3, 1, 2};
+    	int[] ingredient = {2, 1, 1, 2, 3, 1, 2, 3, 1};
     	
     	System.out.println("answer : " + ham.solution(ingredient));
     }
