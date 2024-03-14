@@ -8,29 +8,33 @@ public class S62_옹알이2 {
 	
 	문자열 배열 babbling이 매개변수로 주어질 때, 
 	머쓱이의 조카가 발음할 수 있는 단어의 개수를 return하도록 solution 함수를 완성해주세요.
-	 */
+	*/
 	
-    public int solution(String[] babbling) {
-        int answer = 0;
-        int sp = 0;
-        int index = 0;
-        StringBuilder sb = new StringBuilder();
-        
-        for (String str : babbling) {
-        	
-        	for (int i = 0; i < str.length(); i++) {
-        		sb.append(str.charAt(i));
-        		if (i > 0 && (str.equals("aya") || str.equals("ye"))
-        				|| str.equals("woo") || str.equals("ma")) {
-        			continue;
-        		}else if (i > 2) {
-        			break;
-        		}
-        		answer++;
-        	}
-        	
-        }
-        
-        return answer;
-    }
+	class Solution {
+	    public int solution(String[] babbling) {
+	        // 발음 가능 {"aya", "ye", "woo", "ma"} 
+	        // 연속해서 발음x
+	        int answer = 0; // babbling 중 발음 가능한 단어 개수
+	        
+	        for(int i=0; i<babbling.length; i++){
+	            // 연속발음될 경우 예외처리 
+	            if(babbling[i].contains("ayaaya") 
+	               || babbling[i].contains("yeye") 
+	               || babbling[i].contains("woowoo")
+	               || babbling[i].contains("mama")){
+	                continue;
+	            }
+	            
+	            babbling[i] = babbling[i].replace("aya", " ");
+	            babbling[i] = babbling[i].replace("ye", " ");
+	            babbling[i] = babbling[i].replace("woo", " ");
+	            babbling[i] = babbling[i].replace("ma", " ");
+	            babbling[i] = babbling[i].replace(" ", "");
+
+	            if(babbling[i].length()  == 0) answer++;
+	        }
+	        
+	        return answer;
+	    }
+	}
 }
