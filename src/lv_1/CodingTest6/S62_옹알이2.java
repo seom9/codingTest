@@ -12,8 +12,9 @@ public class S62_옹알이2 {
 	
 	class Solution {
 	    public int solution(String[] babbling) {
-	        // 발음 가능 {"aya", "ye", "woo", "ma"} 
-	        // 연속해서 발음x
+	        // 발음 가능 {"aya", "ye", "woo", "ma"}
+	        // 연속해서 발음x 
+	    	// 약간 어려움 일단 눈이 
 	        int answer = 0; // babbling 중 발음 가능한 단어 개수
 	        
 	        for(int i=0; i<babbling.length; i++){
