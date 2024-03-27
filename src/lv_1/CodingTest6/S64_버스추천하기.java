@@ -6,7 +6,8 @@ import java.io.*;
 public class S64_버스추천하기 {
     public static void main(String[] args) throws Exception {
 		
-    	// 시간을 분으로 변경해 배열 구성, sort 메서드를 사용하여 조건식으로 가장 짧게 남은 시간을 구하였습니다.
+    	// 시간을 분으로 변경해 배열 구성, 
+    	// sort 메서드를 사용하여 조건식으로 가장 짧게 남은 시간을 구하였습니다.
     	
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	
