@@ -5,5 +5,5 @@
 꾸준히 한결 같은 마음으로 조금씩 배워가는 것이 목표입니다.
 
 <a href="https://github.com/devxb/gitanimals">
-  <img src="https://render.gitanimals.org/lines/{gahyunseoul}?pet-id=1" width="1000" height="120"/>
+  <img src="https://render.gitanimals.org/farms/{gahyunseoul}"/>
 </a>
