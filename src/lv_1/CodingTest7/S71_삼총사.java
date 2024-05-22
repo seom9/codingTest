@@ -41,7 +41,7 @@ public class S71_삼총사 {
 	
     public int solution(int[] number) {
         int answer = 0;
-        
+        ㅇㅇㅇㅇ
         int[] numAry = {-2, 3, 0, 2, -5};
         
         getCombination();
