@@ -1,6 +1,6 @@
 package lv_1.CodingTest7;
 
-public class S71_삼총사 {
+public class S71_sam {
 	/*
 	한국중학교에 다니는 학생들은 각자 정수 번호를 갖고 있습니다. 
 	이 학교 학생 3명의 정수 번호를 더했을 때 0이 되면 3명의 학생은 삼총사라고 합니다. 
@@ -30,24 +30,19 @@ public class S71_삼총사 {
 
 	// 뽑은 원소를 출력하는 메서드
 	private static void print(int[] numAry, boolean[] visited) {
-		System.out.print("{");
 		for (int i = 0; i < visited.length; i++) {
 			if (visited[i]) {
-				System.out.print(numAry[i] + " ");
 			}
 		}
-		System.out.print("}\n");
 	}
 	
     public int solution(int[] number) {
         int answer = 0;
-        ㅇㅇㅇㅇ
         int[] numAry = {-2, 3, 0, 2, -5};
         
-        getCombination();
         return answer;
         
-        삼총사 중.
+
     }
     
 }
