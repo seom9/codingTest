@@ -41,8 +41,9 @@ public class S71_sam {
         int[] numAry = {-2, 3, 0, 2, -5};
         
         return answer;
-        
-
     }
-    
+
+	public static void main(String[] args) {
+		System.out.println("뭐냐");
+	}
 }
