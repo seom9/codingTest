@@ -12,38 +12,39 @@ public class S71_sam {
 	한국중학교 학생들의 번호를 나타내는 정수 배열 number가 매개변수로 주어질 때, 
 	학생들 중 삼총사를 만들 수 있는 방법의 수를 return 하도록 solution 함수를 완성하세요.
 	*/
-	public static void getCombination(int[] numAry, boolean[] visited, int depth, int n, int r) {
-		if (r == 0) { // 뽑아야하는 만큼 뽑았으므로, 출력 후 종료
-			print(numAry, visited);
-			return;
-		}
-		if (depth == n) { // 모든 원소를 둘러보았으므로, 종료
-			return;
-		}
 
-		visited[depth] = true; // 현재 원소를 뽑았을 때
-		getCombination(numAry, visited, depth + 1, n, r - 1); // n-1Cr-1
-
-		visited[depth] = false; // 현재 원소를 뽑지 않았을 때
-		getCombination(numAry, visited, depth + 1, n, r); // n-1Cr
-	}
-
-	// 뽑은 원소를 출력하는 메서드
-	private static void print(int[] numAry, boolean[] visited) {
-		for (int i = 0; i < visited.length; i++) {
-			if (visited[i]) {
+	// 백트래킹 사용
+	private int combination(int[] arr, boolean[] visited, int start, int n, int r, int depth) {
+		if (r == 0) {
+			int sum = 0;
+			for (int i = 0; i < n; i++) {
+				if (visited[i]) sum += arr[i];
 			}
+			return sum == 0 ? 1 : 0;
 		}
+		if (start == n) return 0;
+
+		int count = 0;
+		for (int i = start; i < n; i++) {
+			visited[i] = true;
+			count += combination(arr, visited, i + 1, n, r - 1, depth + 1);
+			visited[i] = false;
+		}
+
+		return count;
 	}
-	
-    public int solution(int[] number) {
-        int answer = 0;
-        int[] numAry = {-2, 3, 0, 2, -5};
-        
-        return answer;
-    }
+
+	public int solution(int[] number) {
+		int people = 3;
+		boolean[] visited = new boolean[number.length];
+		return combination(number, visited, 0, number.length, people, 0);
+	}
 
 	public static void main(String[] args) {
-		System.out.println("뭐냐");
+		S71_sam sam = new S71_sam();
+		int[] numAry = {-2, 3, 0, 2, -5};
+		int answer = sam.solution(numAry);
+
+		System.out.println(answer);
 	}
 }
