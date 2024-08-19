@@ -1,8 +1,7 @@
-<h1>코딩 테스트 풀이</h1>
+<h1>Coding Test</h1>
 
-현재 프로그래머스 lv.1 을 풀고 있고, 하루에 한 문제가 목표이지만 가끔 지켜지지 않고 있습니다.<br>
-백준으로 언제 넘어갈지는... 미지수.<p>
-꾸준히 한결 같은 마음으로 조금씩 배워가는 것이 목표입니다.
+알고리즘 및 자료구조
+코딩테스트 학습
 
 <a href="https://github.com/devxb/gitanimals">
   <img src="https://render.gitanimals.org/farms/{gahyunseoul}"/>
