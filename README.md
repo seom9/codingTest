@@ -4,5 +4,5 @@
 코딩테스트 학습
 
 <a href="https://github.com/devxb/gitanimals">
-  <img src="https://render.gitanimals.org/farms/{gahyunseoul}"/>
+  <img src="https://render.gitanimals.org/farms/{gahyunseoul}" alt="alt"/>
 </a>

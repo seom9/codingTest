@@ -1,6 +1,6 @@
 package lv_1.CodingTest7;
 
-public class S71_숫자짝꿍 {
+public class S72_숫자짝꿍 {
     /*
     두 정수 X, Y의 임의의 자리에서 공통으로 나타나는 정수 k(0 ≤ k ≤ 9)들을 이용하여 만들 수 있는 가장 큰 정수를 두 수의 짝꿍이라 합니다
     (단, 공통으로 나타나는 정수 중 서로 짝지을 수 있는 숫자만 사용합니다).
@@ -23,15 +23,61 @@ public class S71_숫자짝꿍 {
     [생각 정리]
     1. 몇 개씩 있는지 배열로 만듦 => int[10] 해서 몇 개당 몇 개씩 존재하는지
     2. 배열을 서로 비교해서 더 낮은 숫자대로 새 배열 만듦
-    2. 해당 배열을 역으로 추적하여 StringBuilder 로 숫자를 만들어 주기
+    3. 해당 배열을 역으로 추적하여 StringBuilder 로 숫자를 만들어 주기
+     */
+
+    /*
+    [후기]
+    1. 생각을 안 하고 하는 게 문제임 나
      */
 
     public String solution(String X, String Y) {
-        String answer = "";
-        return answer;
+
+        StringBuilder answer = new StringBuilder();
+
+        int[] numX = new int[10];
+        int[] numY = new int[10];
+
+        for (int i = 0; i < X.length(); i++) {
+            int num = X.charAt(i) - '0';
+            numX[num]++;
+        }
+
+        for (int i = 0; i < Y.length(); i++) {
+            int num = Y.charAt(i) - '0';
+            numY[num]++;
+        }
+
+        for (int i = 9; i >= 0; i--) {
+            if (i == 0) {
+                if (answer.length() == 0) {
+                    if (numX[i] == 0 && numY[i] == 0) {
+                        return "0";
+                    } else if (numX[i] > 0 || numY[i] > 0) {
+                        return "0"; // i = 0 일 때는 여기서 걸림
+                    } else {
+                        return "-1";
+                    }
+                }
+            }
+
+            if (numX[i] == 0 || numY[i] == 0) {
+
+            } else if (numX[i] >= numY[i]) {
+                for (int j = 0; j < numY[i]; j++) answer.append(i);
+            } else if (numX[i] < numY[i]) {
+                for (int j = 0; j < numX[i]; j++) answer.append(i);
+            }
+        }
+
+        return answer.toString();
     }
 
     public static void main(String agrs[]) {
+        S72_숫자짝꿍 solution = new S72_숫자짝꿍();
+        String answer = solution.solution("100", "203045");
+
+        System.out.println(answer);
 
     }
 }
