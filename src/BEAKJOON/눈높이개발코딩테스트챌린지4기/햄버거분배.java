@@ -24,25 +24,31 @@ public class 햄버거분배 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        while (true) {
+            n = sc.nextInt();
 
-        n = sc.nextInt();
-        k = sc.nextInt();
+            long answer = n*31/15;
 
-        str = sc.next();
-        eaten = new boolean[n];
-        int answer = 0;
+            System.out.println(answer);
 
-        for (int i = 0; i < n; i++) {
-            for (int j = Math.max(0, i - k); j <= Math.min(n - 1, i + k); j++) {
-                if (str.charAt(i) == 'P' && str.charAt(j) == 'H' && eaten[j] == false) {
-                    eaten[j] = true;
-                    answer++;
-                    break;
-                }
-            }
+
         }
+        // k = sc.nextInt();
 
-        System.out.println(answer);
+//        str = sc.next();
+//        eaten = new boolean[n];
+//        int answer = 0;
+//
+//        for (int i = 0; i < n; i++) {
+//            for (int j = Math.max(0, i - k); j <= Math.min(n - 1, i + k); j++) {
+//                if (str.charAt(i) == 'P' && str.charAt(j) == 'H' && eaten[j] == false) {
+//                    eaten[j] = true;
+//                    answer++;
+//                    break;
+//                }
+//            }
+//        }
+
 
     }
 }
