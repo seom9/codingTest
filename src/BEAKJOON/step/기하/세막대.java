@@ -15,6 +15,10 @@ public class 세막대 {
 
         Arrays.sort(arr);
 
+        while (arr[0] + arr[1] <= arr[2]) {
+            arr[2]--;
+        }
+        System.out.println(arr[0] + arr[1] + arr[2]);
 
     }
 }
