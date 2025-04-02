@@ -14,9 +14,9 @@ public class 체스판다시칠하 {
             String line = sc.next();
             for (int j = 0; j < width; j++) {
                 chess[i][j] = line.charAt(j);
-            }
+            }//
         }
-
+        // int mainPaint
         int minPaint = Integer.MAX_VALUE;
 
         // 8x8 크기로 자르기
