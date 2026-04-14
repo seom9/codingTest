@@ -6,7 +6,7 @@ public class ConvertToBeakjoon {
     public static void main(String[] args) throws IOException {
 
         // 1. 파일 경로 입력
-        String filePath = "C:\\workspace\\codingTest\\src\\BEAKJOON\\step\\정렬\\커트라인.java"; // ← 변경: 여기만 바꾸면 됨
+        String filePath = "C:\\workspace\\codingTest\\src\\BEAKJOON\\step\\정렬\\소트인사이드.java"; // ← 변경: 여기만 바꾸면 됨
 
         // 2. 파일 내용 읽기
         String inputCode = Files.readString(Path.of(filePath)); // ← 변경
